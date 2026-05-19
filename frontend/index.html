@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🪐 Orbit</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- AUTH SECTION -->
+<div id="auth-section">
+  <div class="auth-container">
+    <div class="auth-brand">
+      <div class="brand-logo">🪐</div>
+      <h1>Orbit</h1>
+      <p>Your world.Your orbit.</p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="auth-card">
+      <h2>Welcome Back</h2>
+      <input type="email" id="login-email" placeholder="Email address" />
+      <input type="password" id="login-password" placeholder="Password" />
+      <button onclick="login()" class="btn-primary">Sign In</button>
+      <p class="switch-auth">New here? <span onclick="showRegister()">Create account</span></p>
+      <div id="login-error" class="error-msg"></div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="auth-card hidden">
+      <h2>Join Orbit</h2>
+      <input type="text" id="reg-name" placeholder="Full Name" />
+      <input type="text" id="reg-username" placeholder="Username" />
+      <input type="email" id="reg-email" placeholder="Email address" />
+      <input type="password" id="reg-password" placeholder="Password" />
+      <button onclick="register()" class="btn-primary">Create Account</button>
+      <p class="switch-auth">Already have an account? <span onclick="showLogin()">Sign in</span></p>
+      <div id="register-error" class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app-section" class="hidden">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">🪐 <span>Orbit</span></div>
+    <nav>
+      <a href="#" class="nav-item active" onclick="showPage('feed')"><i class="fas fa-home"></i> <span>Home</span></a>
+      <a href="#" class="nav-item" onclick="showPage('explore')"><i class="fas fa-compass"></i> <span>Explore</span></a>
+      <a href="#" class="nav-item" onclick="showPage('profile')"><i class="fas fa-user"></i> <span>Profile</span></a>
+    </nav>
+    <div class="sidebar-user" id="sidebar-user">
+      <div class="user-avatar" id="sidebar-avatar">U</div>
+      <div>
+        <div id="sidebar-name" class="fw-600">User</div>
+        <div id="sidebar-username" class="text-muted">@user</div>
+      </div>
+      <button onclick="logout()" class="logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- FEED PAGE -->
+    <div id="page-feed" class="page">
+      <div class="page-header"><h2>Home Feed</h2></div>
+
+      <!-- Create Post -->
+      <div class="create-post card">
+        <div class="create-post-top">
+          <div class="user-avatar sm" id="post-avatar">U</div>
+          <textarea id="post-content" placeholder="What's on your mind?" rows="3"></textarea>
+        </div>
+        <div class="create-post-actions">
+          <button onclick="createPost()" class="btn-primary"><i class="fas fa-paper-plane"></i> Post</button>
+        </div>
+      </div>
+
+      <!-- Posts Feed -->
+      <div id="posts-container"></div>
+    </div>
+
+    <!-- EXPLORE PAGE -->
+    <div id="page-explore" class="page hidden">
+      <div class="page-header">
+        <h2>Explore People</h2>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search-input" placeholder="Search users..." oninput="searchUsers()" />
+        </div>
+      </div>
+      <div id="users-container" class="users-grid"></div>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div id="page-profile" class="page hidden">
+      <div id="profile-content"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Comments Modal -->
+<div id="comments-modal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeComments()"></div>
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Comments</h3>
+      <button onclick="closeComments()" class="close-btn"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="comments-list"></div>
+    <div class="comment-input">
+      <input type="text" id="comment-text" placeholder="Write a comment..." />
+      <button onclick="addComment()" class="btn-primary sm"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

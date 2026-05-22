@@ -34,8 +34,3 @@ A full-stack social media platform where users can create accounts, share posts,
 git clone <https://github.com/Khushijaiswal-hub/Code-Alpha_SocialMedia->
 
 
-
-
-##Demo Video
-[watch](https://drive.google.com/file/d/1B4q1Y-mxbCLSTF25Q4NfYjoH2Q6HTVWo/view?usp=sharing)
-
